@@ -5,7 +5,7 @@ import org.openqa.selenium.Keys;
 
 
 public class Order {
-    private final WebDriver driver ;
+    private final WebDriver driver;
 
     //Локатор
 

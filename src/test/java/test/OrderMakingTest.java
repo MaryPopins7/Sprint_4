@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import praktikum.MainPage;
 import praktikum.Order;
 
@@ -43,10 +44,11 @@ public class OrderMakingTest {
 
     @Parameterized.Parameters
     public static Object[][] getNumber () {
-        return new Object[][] {
-                {"Мария", "Украинская", "Открытое шоссе д.28 кв.2", "Бульвар Рокосcовского", "89037544196","08.08.2022", "двое суток", "Позвоните за час до приезда"},
+        return new Object[][]{
+                {"Мария", "Украинская", "Открытое шоссе д.28 ", "Бульвар Рокосcовского", "89037544196", "08.08.2022", "двое суток", "Позвоните за час до приезда"},
 
-        };
+        {"Владимир", "Украинский", "Нахимовский 22", "Черкизовская", "8688999999", "09.08.2022", "двое суток", "black", "Звоните подольше"}
+    };
     }
 
     @Before
@@ -54,8 +56,12 @@ public class OrderMakingTest {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         // открываем страницу яндексСамоката в барузере
-        driver.get(MainPage.yandexServise_URL);
+        driver.get(MainPage.url);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        WebDriverManager.firefoxdriver().setup();
+        driver = new FirefoxDriver();
+        driver.get(MainPage.url);
 
     }
 
@@ -74,7 +80,7 @@ public class OrderMakingTest {
         // заполняем первую страницу заказа, нажимаем кнопку "Далее" с помощью объединенного метода fillFirstPage
         Order order = new Order(driver);
         order.fillFirstPage(name, surName, address, phone, station);
-        Thread.sleep(5000);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 
 

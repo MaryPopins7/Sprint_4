@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class MainPage {
     private WebDriver driver;
-    public final static String yandexServise_URL = "https://qa-scooter.praktikum-services.ru/";
+    public final static String url = "https://qa-scooter.praktikum-services.ru/";
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -14,30 +14,30 @@ public class MainPage {
 
     // Массив локаторов для FAQ
     private final By[] locatorFAQ = {
-            By.xpath(".//div[@aria-controls='accordion__panel-0']"),
-            By.xpath(".//div[@aria-controls='accordion__panel-1']"),
-            By.xpath(".//div[@aria-controls='accordion__panel-2']"),
-            By.xpath(".//div[@aria-controls='accordion__panel-3']"),
-            By.xpath(".//div[@aria-controls='accordion__panel-4']"),
-            By.xpath(".//div[@aria-controls='accordion__panel-5']"),
-            By.xpath(".//div[@aria-controls='accordion__panel-6']"),
-            By.xpath(".//div[@aria-controls='accordion__panel-7']")
+            By.id("accordion__heading-0"),
+            By.id("accordion__heading-1"),
+            By.id("accordion__heading-2"),
+            By.id("accordion__heading-3"),
+            By.id("accordion__heading-4"),
+            By.id("accordion__heading-5"),
+            By.id("accordion__heading-6"),
+            By.id("accordion__heading-7")
     };
 
     // Массив локаторов для ответов на FAQ
     private final By[] locatorAnswersFAQ = {
-            By.xpath(".//div[@aria-labelledby='accordion__heading-0']"),
-            By.xpath(".//div[@aria-labelledby='accordion__heading-1']"),
-            By.xpath(".//div[@aria-labelledby='accordion__heading-2']"),
-            By.xpath(".//div[@aria-labelledby='accordion__heading-3']"),
-            By.xpath(".//div[@aria-labelledby='accordion__heading-4']"),
-            By.xpath(".//div[@aria-labelledby='accordion__heading-5']"),
-            By.xpath(".//div[@aria-labelledby='accordion__heading-6']"),
-            By.xpath(".//div[@aria-labelledby='accordion__heading-7']")
+            By.id("accordion__panel-0"),
+            By.id("accordion__panel-1"),
+            By.id("accordion__panel-2"),
+            By.id("accordion__panel-3"),
+            By.id("accordion__panel-4"),
+            By.id("accordion__panel-5"),
+            By.id("accordion__panel-6"),
+            By.id("accordion__panel-7")
     };
 
     // Массив с ответами на FAQ
-    public static final String[] answersFAQ = {
+    public final String[] answersFAQ = {
             "Сутки — 400 рублей. Оплата курьеру — наличными или картой.",
             "Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.",
             "Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.",
