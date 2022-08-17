@@ -71,9 +71,24 @@ public class OrderMakingTest {
     }
 
     @Test
-    public void testFillOrderInformWithOrderButtonLow() throws InterruptedException {
-        // нажимаем на кнопку заказать внизу экрана
+    public void testFillOrderInformWithOrderButtonUp() {
+        // нажимаем на кнопку заказать вверху экрана
+        MainPage mainPage = new MainPage(driver);
+        mainPage.closeCookieButton();
+        mainPage.clickToOrderButtonUp();
+        // заполняем первую страницу заказа, нажимаем кнопку "Далее" с помощью объединенного метода fillFirstPage
+        Order order = new Order(driver);
+        order.fillFirstPage(name, surName, address, phone, station);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
+        // заполняем вторую страницу заказа, с помощью объединенного метода fillSecondPage
+        order.fillSecondPage(date, period, comment);
+        assertTrue("Window Order Completed - not found!",order.getNotificationOfOrderCreation());
+    }
+
+    @Test
+    public void testFillOrderInformWithOrderButtonLow() {
+        // нажимаем на кнопку заказать внизу экрана
         MainPage mainPage = new MainPage(driver);
         mainPage.closeCookieButton();
         mainPage.clickToOrderButtonLow();
@@ -82,11 +97,11 @@ public class OrderMakingTest {
         order.fillFirstPage(name, surName, address, phone, station);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-
-
         // заполняем вторую страницу заказа, с помощью объединенного метода fillSecondPage
         order.fillSecondPage(date, period, comment);
         assertTrue("Window Order Completed - not found!",order.getNotificationOfOrderCreation());
     }
 
 }
+
+

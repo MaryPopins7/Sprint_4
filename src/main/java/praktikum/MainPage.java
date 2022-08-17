@@ -81,13 +81,10 @@ public class MainPage {
         driver.findElement(topButtonOrder).click();
     }
 
-    // Скрол к кнопке "Заказать" в нижней части страницы
-    public void scrollToLowerButton() {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();",
-                driver.findElement(lowerButtonOrder));
-    }
 
-    // Клик на кнопку "Заказать" в нижней части страницы
+
+
+    // Скролл и клик на кнопку "Заказать" в нижней части страницы
     public void clickToOrderButtonLow() {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();",
                 driver.findElement(lowerButtonOrder));
